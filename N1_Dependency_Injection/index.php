@@ -4,22 +4,20 @@ require_once "Objeto.php";
 require_once "Llaves_de_coche.php";
 require_once "Llaves_de_casa.php";
 require_once "Smartphone.php";  
-require_once "Verificar_objetos.php";
-require_once "Contenedor.php";
+require_once "Persona.php";
 
 
-$tipoDeObjeto = [
-      "Llaves de casa",
-      "Llaves de coche",
-      "Smartphone"
-];
 
-$conteiner = new Contenedor();
+$llavesDeCasa = New LlavesDeCasa();
+$llavesDeCoche = New LlavesDeCoche();
+$smartphone = New Smartphone();
 
-foreach($tipoDeObjeto as $objeto) {
-    
-    $verificar = $conteiner->crearVerificadorDeObjetos($objeto);
 
-    echo $verificar->verificarObjetos() . PHP_EOL;
-}
+$persona = New Persona ([
+    $llavesDeCasa,
+    $llavesDeCoche,
+    $smartphone
+]);
+
+$persona->agarrarObjetosAntesDeSalirDeCasa();
 
